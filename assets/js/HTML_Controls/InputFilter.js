@@ -29,7 +29,7 @@ function showIsEmptyIfPokeSearchIsEmpty() {
 }
 
 function filterByInputValue(val) {
-  if (val.name.includes(controls.input.value)) {
+  if (val.name.includes(controls.input.value.toLowerCase())) {
     return val
   }
 }
