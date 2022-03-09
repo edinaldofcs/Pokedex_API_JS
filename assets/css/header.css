@@ -1,0 +1,48 @@
+.header{
+  align-items: center;
+  background: linear-gradient(270deg, #44CCA6 0%, #BBD995 100%);
+  box-shadow: 0px 3px 12px rgba(69, 62, 7, 0.3);
+  display: flex;
+  justify-content: center;
+  height: 70px;
+  padding: 20px 50px;
+  position: fixed;
+  width: 100%;
+}
+
+.header__nav{
+  margin-left: 100px;  
+  width: 60%;
+}
+
+.header__nav ul{
+  display: flex;
+  justify-content: space-around;
+  width: 500px;
+}
+
+.header__nav ul li a{
+  color: #121212;
+  font-family: Satoshi;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 800px) {
+  .header__nav ul{
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .header__nav{
+    display: none;
+  }
+}
+  

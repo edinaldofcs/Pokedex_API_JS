@@ -1,0 +1,37 @@
+.container{
+  width: 100%;
+  position: absolute;
+  top: 70px;
+  display: flex;
+  align-items: flex-start;
+  z-index: -2;  
+  justify-content: center;
+}
+
+.contents{
+  width: 80%;
+  padding-bottom: 150px;
+  border-left: 2px solid #ccc;
+  width: 100%;
+  z-index: -1;
+}
+
+.pokedex{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+@media screen and (max-width: 900px) {
+  .contents{
+    width: 70%;
+  }    
+}
+
+@media screen and (max-width: 768px) {
+  .contents{
+    width: 100%;
+    border-left: none;
+  }
+}

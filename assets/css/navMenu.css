@@ -1,0 +1,49 @@
+.asside{
+  align-items: center;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  list-style: circle;
+  text-align: center;
+  width: 20%; 
+  z-index: -1;
+}
+
+.asside__detalhes h2{
+  color: #8C8C8D;
+  cursor: pointer;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 32px;
+  margin-top: 50px;
+  width: 100%;
+}
+
+.asside__check{
+  text-align: left;
+}
+.asside__check input{
+  margin-top: 14px;  
+}
+.asside__check label{
+  color: #747474;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 22px;
+  margin-left: 5px;
+}
+
+@media screen and (max-width: 990px) {
+  .asside{
+    font-size: 16px;
+    width: 30%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .asside{
+    display: none;
+  }
+}
