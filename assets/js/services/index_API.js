@@ -1,27 +1,27 @@
 const getAmount = async () => {
   const pokeAmount = await fetch(`https://pokeapi.co/api/v2/pokemon`)
-  .then(response => response.json())
-  .then(data => data.count)  
+    .then(response => response.json())
+    .then(data => data.count)
   return pokeAmount;
 }
 
 const findPokemons = async () => {
   const pokeAmount = await getAmount();
   const fullList = await fetchPokemons(pokeAmount)
-  
+
   const getpokemons = name => `https://pokeapi.co/api/v2/pokemon/${name}`
-  
+
   const pokemons = []
   for (let i in fullList) {
     pokemons.push(fetch(getpokemons(fullList[i])).then(resp => resp.json()))
   }
-  
+
   var list;
   await Promise.all(pokemons)
-  .then(response => {
-    list = response
-  })
-  
+    .then(response => {
+      list = response
+    })
+
   return treatObject(list)
 }
 
@@ -46,11 +46,13 @@ async function fetchPokemons(amountPokemons) {
 function treatObject(list) {
   var filterList = []
   for (let pokemon of list) {
-    filterList.push({
-      name: pokemon.name,
-      image: pokemon.sprites.other.home.front_default,
-      type: pokemon.types
-    })
+    if (pokemon.sprites.other.home.front_default) {
+      filterList.push({
+        name: pokemon.name,
+        image: pokemon.sprites.other.home.front_default,
+        type: pokemon.types
+      })
+    }
   }
   return filterList
 }
