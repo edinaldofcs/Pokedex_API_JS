@@ -1,3 +1,29 @@
+const getAmount = async () => {
+  const pokeAmount = await fetch(`https://pokeapi.co/api/v2/pokemon`)
+  .then(response => response.json())
+  .then(data => data.count)  
+  return pokeAmount;
+}
+
+const findPokemons = async () => {
+  const pokeAmount = await getAmount();
+  const fullList = await fetchPokemons(pokeAmount)
+  
+  const getpokemons = name => `https://pokeapi.co/api/v2/pokemon/${name}`
+  
+  const pokemons = []
+  for (let i in fullList) {
+    pokemons.push(fetch(getpokemons(fullList[i])).then(resp => resp.json()))
+  }
+  
+  var list;
+  await Promise.all(pokemons)
+  .then(response => {
+    list = response
+  })
+  
+  return treatObject(list)
+}
 
 async function fetchPokemons(amountPokemons) {
   var list;
@@ -7,55 +33,29 @@ async function fetchPokemons(amountPokemons) {
       list = data.results;
     })
     .catch(err => console.log(err));
-  return listPokemons (list);
-}
 
-async function listPokemons(pokemons) {
-  let list = []
-  for (let i = 0; i < pokemons.length; i++) {
-    await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemons[i].name}`)
-      .then(response => response.json())
-      .then(data => {
-        list.push(data);
-      })
-      .catch(err => console.log(err));
+  const pokemons = []
+
+  for (let i = 0; i < amountPokemons; i++) {
+    pokemons.push(list[i].name)
   }
 
-  // console.log(list)
-  return treatObject(list)
-  // return arrangeInAlphabeticalOrder(list);
+  return pokemons;
 }
 
-function arrangeInAlphabeticalOrder(list) {
-  
-  list.sort(function (a, b) {
-    if (a.name > b.name) {
-      return 1;
-    }
-    if (a.name < b.name) {
-      return -1;
-    }
-    return 0;
-  });
-  return treatObject(list)
-}
-
-function treatObject(pokemons) {
-  let pokeTemp = []
-  pokemons.forEach((element) => {
-    if (element.sprites.other.home.front_default) {
-      let pokemon = {
-        name: element.name,
-        type: element.types,
-        image: element.sprites.other.home.front_default,
-      }
-      pokeTemp.push(pokemon);
-    }
-  })
-  return pokeTemp;
+function treatObject(list) {
+  var filterList = []
+  for (let pokemon of list) {
+    filterList.push({
+      name: pokemon.name,
+      image: pokemon.sprites.other.home.front_default,
+      type: pokemon.types
+    })
+  }
+  return filterList
 }
 
 export const services = {
-  fetchPokemons
+  findPokemons,
 }
 
