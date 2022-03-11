@@ -32,7 +32,7 @@ function checkFilter(array) {
   var arrayTemp = [];
   pokeInfos.filter(function (pokemon) {
     pokemon.type.map((poketypes) => {
-      if (array.includes(poketypes.type.name)) {
+      if (array.includes(poketypes)) {
         arrayTemp.push(pokemon)
       }
     })

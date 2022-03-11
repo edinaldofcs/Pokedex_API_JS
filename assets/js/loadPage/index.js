@@ -21,23 +21,22 @@ export const LoadNav = () => {
   controls.aside.innerHTML = `<summary><h2>Filter By Type</h2></summary>` + contents;
 }
 
-export const LoadCards = (pokemons, start, end) => {
+export const LoadCards = (pokemons, start, end) => {  
 
   let cardHtml = '';
   var number = 1;
   let typeHtml = '';
 
   for (let i = start; i < end; i++) {
-
     if (pokemons[i]) {
       pokemons[i].type.map((item) => {
-        typeHtml += `<span style="border-color: ${Theme.colors[item.type.name]};
-        color: ${Theme.colors[item.type.name]}">${item.type.name}</span>`
+        typeHtml += `<span style="border-color: ${Theme.colors[item]};
+        color: ${Theme.colors[item]}">${item}</span>`
       })
       cardHtml += `
         <div class="pokecards__card  card${number}" data-singleCard>  
           <div class="pokecards__container">  
-          ${Theme.BackGroundImage(Theme.RGBAConverter(Theme.colors[pokemons[number - 1].type[0].type.name]))}   
+          ${Theme.BackGroundImage(Theme.RGBAConverter(Theme.colors[pokemons[number - 1].type[0]]))}   
           <img class="pokecards__img" src="${pokemons[i].image}" alt="${pokemons[i].image}" data-img>          
           </div>
           <p data-pokeName>${pokemons[i].name}</p>

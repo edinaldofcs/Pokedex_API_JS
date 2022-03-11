@@ -81,11 +81,11 @@ const UpdateCards = (pokemons, start, end) => {
     if (pokemons[i]) {
       pokemons[i].type.forEach((element, index) => {
         if(index == 0){
-          controls.svgColor()[number].style.fill = Theme.RGBAConverter(Theme.colors[element.type.name])          
+          controls.svgColor()[number].style.fill = Theme.RGBAConverter(Theme.colors[element])          
         }
         controls.pokeTypes()[number].innerHTML += `<span style="
-        border-color: ${Theme.colors[element.type.name]};
-        color: ${Theme.colors[element.type.name]}">${element.type.name}</span>`
+        border-color: ${Theme.colors[element]};
+        color: ${Theme.colors[element]}">${element}</span>`
       });
       controls.imgPokemon()[number].src = pokemons[i].image
       controls.imgPokemon()[number].alt = pokemons[i].name
