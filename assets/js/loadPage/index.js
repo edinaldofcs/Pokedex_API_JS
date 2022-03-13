@@ -1,6 +1,7 @@
 import { Theme } from "../../theme/index.js";
 import { controls } from "../HTML_Controls/variables.js";
 import { maxPokemonsPerPage } from '../index.js'
+import { ShowEmptyPage } from "./emptyPage.js";
 
 const types = ["normal", "fighting", "flying", "ground", "ghost", "fire", "grass",
   "psychic", "dragon", "fairy", "poison", "rock", "steel", "water",
@@ -22,6 +23,9 @@ export const LoadNav = () => {
 }
 
 export const LoadCards = (pokemons, start, end) => {  
+  if(pokemons.length == 0){
+    return ShowEmptyPage();
+  }
 
   let cardHtml = '';
   var number = 1;

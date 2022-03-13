@@ -4,6 +4,7 @@ const input = document.querySelector('[data-input]')
 const dataCard = document.querySelector('[data-cards]')
 const checkArea = document.querySelector('[data-detalhes]')
 const aside = document.querySelector('[data-detalhes]')
+const slider = document.querySelector('[data-slider]')
 
 const allChangeButtons = () => {
   return document.querySelectorAll('#change')
@@ -47,5 +48,6 @@ export const controls = {
   pokeName,
   singleCard,
   svgColor,
-  pokeTypes
+  pokeTypes,
+  slider,
 }

@@ -9,6 +9,11 @@
   width: 20%; 
   z-index: -1;
 }
+.asside__container{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
 .asside__detalhes h2{
   color: #8C8C8D;
@@ -17,7 +22,7 @@
   font-style: normal;
   font-weight: bold;
   line-height: 32px;
-  margin-top: 50px;
+  margin-top: 30px;
   width: 100%;
 }
 
